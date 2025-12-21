@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolce&Gabbana® Food & Beverage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;
+            color: #000;
+            background: #fff;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background: transparent;
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .top-nav.scrolled,
+        .top-nav:hover {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav-left, .top-nav-right {
+            display: flex;
+            gap: 30px;
+        }
+
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .top-nav.scrolled a,
+        .top-nav:hover a {
+            color: #000;
+        }
+
+        .top-nav a.active {
+            text-decoration: underline;
+        }
+
+        /* Main Header */
+        .main-header {
+            background: transparent;
+            text-align: center;
+            padding: 40px 20px 20px;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .main-header.scrolled {
+            background: #fff;
+            padding: 15px 20px;
+            top: 45px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .main-header:hover .logo,
+        .main-header.scrolled .logo {
+            color: #000;
+        }
+
+        .main-header.scrolled .logo {
+            font-size: 0;
+            margin-bottom: 0;
+        }
+
+        .dg-icon {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .main-header:hover .dg-icon,
+        .main-header.scrolled .dg-icon {
+            color: #000;
+        }
+
+        .main-header.scrolled .dg-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .sub-menu {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+
+        .main-header.scrolled .sub-menu {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .sub-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .main-header:hover .sub-menu a,
+        .main-header.scrolled .sub-menu a {
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #d0d0d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .content-section h2 {
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .content-section p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            border-bottom: 2px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+            padding-bottom: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .shop-btn:hover {
+            opacity: 0.6;
+        }
+
+        /* Split Section - Wine */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .split-left {
+            background: #fff;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .wine-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .wine-header h2 {
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .wine-carousel-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wine-counter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .wine-counter-track {
+            width: 80px;
+            height: 1px;
+            background: rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .wine-counter-bar {
+            width: 20%;
+            height: 1px;
+            background: #000;
+            position: absolute;
+            left: 0;
+            transition: left 0.5s ease;
+        }
+
+        .split-right {
+            position: relative;
+            background: #e8e8e8;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .split-right-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: 1px solid rgba(0,0,0,0.2);
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 10;
+            color: #000;
+            transition: all 0.3s;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255,255,255,0.9);
+            border-color: #000;
+        }
+
+        .carousel-nav.prev { left: 20px; }
+        .carousel-nav.next { right: 20px; }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+
+        .dot {
+            width: 40px;
+            height: 2px;
+            background: rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #000;
+        }
+
+        /* Full Width Section - Pasta */
+        .full-width-section {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .full-width-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 80px;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .full-width-overlay h2 {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .full-width-overlay p {
+            font-size: 15px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .full-width-overlay .shop-btn {
+            border-bottom-color: #fff;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-logo {
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .footer-section input {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section input::placeholder {
+            color: #999;
+        }
+
+        .footer-section button {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #fff;
+            color: #fff;
+            padding: 8px 0;
+            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .split-section {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="top-nav-left">
+            <a href="#">Fashion</a>
+            <a href="#">Beauty</a>
+            <a href="#" class="active">Food&Beverage</a>
+            <a href="#">World</a>
+            <a href="#">Alta Moda</a>
+            <a href="#">Sustainability</a>
+            <a href="#">MY DG</a>
+        </div>
+        <div class="top-nav-right">
+            <a href="#">🔍 Search</a>
+            <a href="#">Wishlist</a>
+            <a href="#">Store Locator</a>
+            <a href="#">Login</a>
+            <a href="#">🛍️</a>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="logo">DOLCE & GABBANA</div>
+        <div class="dg-icon">DG</div>
+        <div class="sub-menu">
+            <a href="#">FOOD</a>
+            <a href="#">BEVERAGE</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-placeholder">
+            <div style="text-align:center;">
+                <strong style="font-size:16px;">HERO IMAGE: hero-panettone.jpg</strong><br><br>
+                <span style="font-size:13px;">Hình bánh Panettone với hộp thiếc màu sắc rực rỡ<br>
+                Kích thước: 1920x1080px<br><br>
+                (Thay bằng: &lt;img src="images/hero-panettone.jpg"&gt;)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Description -->
+    <section class="content-section">
+        <h2>DOLCE&GABBANA AND FIASCONARO UNVEIL A NEW DELIGHT: THE CIOCCOPANETTONE WITH SICILIAN ORANGES</h2>
+        <p>The collaboration between Fiasconaro's confectionery art and Dolce&Gabbana's aesthetic continues to celebrate Italian excellence. For the holidays, discover the new Cioccopanettone with Sicilian oranges: a rich cocoa dough with citrus candied fruit, enclosed in a new tin inspired by the traditional Carretto Siciliano. An experience that blends flavor, craftsmanship, and unique creativity.</p>
+        <a href="#" class="shop-btn">SHOP NOW</a>
+    </section>
+
+    <!-- Wine Section - Split -->
+    <section class="split-section">
+        <div class="split-left">
+            <div class="wine-header">
+                <h2>DONNAFUGATA WINE</h2>
+                <a href="#" class="shop-btn">SHOP NOW</a>
+            </div>
+            
+            <!-- Carousel trong phần trái -->
+            <div class="wine-carousel-container">
+                <div class="carousel">
+                    <div class="carousel-inner" id="carouselInner">
+                        <div class="carousel-item" style="background:#e0e0e0;">
+                            <div style="text-align:center;padding:20px;">
+                                <strong>WINE CAROUSEL 1</strong><br>
+                                wine-carousel-1.jpg<br>
+                                (Chai rượu + hộp - 600x500px)
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background:#d5d5d5;">
+                            <div style="text-align:center;padding:20px;">
+                                <strong>WINE CAROUSEL 2</strong><br>
+                                wine-carousel-2.jpg<br>
+                                (Chai Bollicina Gold - 600x500px)
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background:#cacaca;">
+                            <div style="text-align:center;padding:20px;">
+                                <strong>WINE CAROUSEL 3</strong><br>
+                                wine-carousel-3.jpg<br>
+                                (Chai khác - 600x500px)
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background:#c0c0c0;">
+                            <div style="text-align:center;padding:20px;">
+                                <strong>WINE CAROUSEL 4</strong><br>
+                                wine-carousel-4.jpg<br>
+                                (Chai rượu #4 - 600x500px)
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background:#b5b5b5;">
+                            <div style="text-align:center;padding:20px;">
+                                <strong>WINE CAROUSEL 5</strong><br>
+                                wine-carousel-5.jpg<br>
+                                (Chai rượu #5 - 600x500px)
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
+                    <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+                </div>
+                
+                <!-- Counter -->
+                <div class="wine-counter">
+                    <span id="currentSlideStart">01</span>
+                    <div class="wine-counter-track">
+                        <div class="wine-counter-bar" id="progressBar"></div>
+                    </div>
+                    <span id="currentSlideEnd">02</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hình cố định bên phải -->
+        <div class="split-right">
+            <!-- 
+            HÌNH ẢNH CỐ ĐỊNH: wine-fixed.jpg
+            Hình collection các chai rượu Donnafugata
+            Kích thước: 800x1000px (portrait)
+            -->
+            <div class="hero-placeholder" style="width:100%;height:100%;">
+                <div style="text-align:center;">
+                    <strong style="font-size:16px;">WINE FIXED IMAGE</strong><br><br>
+                    <span style="font-size:13px;">wine-fixed.jpg<br>
+                    (Hình cố định - Collection rượu<br>
+                    800x1000px - portrait)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pasta Section - Full Width -->
+    <section class="full-width-section">
+        <div class="hero-placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            <div style="text-align:center;">
+                <strong style="font-size:16px;">PASTA IMAGE: pasta-background.jpg</strong><br><br>
+                <span style="font-size:13px;">Hình các gói pasta Di Martino với cà chua<br>
+                Kích thước: 1920x900px</span>
+            </div>
+        </div>
+        <div class="full-width-overlay">
+            <h2>PASTA DI MARTINO</h2>
+            <p>Rediscover the taste of home with Dolce&Gabbana and Pasta di Martino.</p>
+            <a href="#" class="shop-btn">SHOP NOW</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">DOLCE & GABBANA</div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>STORE LOCATOR</h3>
+                <input type="text" placeholder="Enter a location to find the nearest DG Stores">
+                <button>Search</button>
+            </div>
+            <div class="footer-section">
+                <h3>SUBSCRIBE TO NEWSLETTER</h3>
+                <input type="email" placeholder="Insert your email">
+                <button>Confirm</button>
+                <p style="font-size: 10px; margin-top: 15px; color: #999;">I declare that I have read the Privacy Policy.</p>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="#">SERVICES</a>
+            <a href="#">ORDER TRACKING</a>
+            <a href="#">RETURNS</a>
+            <a href="#">CUSTOMER CARE</a>
+            <a href="#">LEGAL AREA</a>
+            <a href="#">CORPORATE</a>
+            <a href="#">FOLLOW US</a>
+        </div>
+        <div class="footer-bottom">
+            Site – managed by The Level S.r.l – Copyright © Dolce & Gabbana S.r.l. 2025 – All rights reserved
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 5;
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const inner = document.getElementById('carouselInner');
+            inner.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update counter
+            const start = currentSlide + 1;
+            const end = currentSlide + 2;
+            document.getElementById('currentSlideStart').textContent = String(start).padStart(2, '0');
+            document.getElementById('currentSlideEnd').textContent = String(end).padStart(2, '0');
+            
+            // Update progress bar position
+            const progressBar = document.getElementById('progressBar');
+            const position = (currentSlide / (totalSlides - 1)) * 80; // 80% là 4 đoạn trên thanh 5 slides
+            progressBar.style.left = position + '%';
+        }
+
+        // Auto-play carousel
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const topNav = document.querySelector('.top-nav');
+            const mainHeader = document.querySelector('.main-header');
+            const body = document.body;
+            
+            if (window.scrollY > 50) {
+                topNav.classList.add('scrolled');
+                mainHeader.classList.add('scrolled');
+                body.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
+                mainHeader.classList.remove('scrolled');
+                body.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
