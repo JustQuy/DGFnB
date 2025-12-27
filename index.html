@@ -127,6 +127,7 @@
             height: 40px;
             width: auto;
             display: none;
+            margin: 0 auto;
         }
 
         .main-header.scrolled .dg-logo-img {
@@ -433,54 +434,51 @@
             grid-template-columns: 1fr 1fr;
             gap: 100px;
             max-width: 1400px;
-            margin: 0 auto 60px;
+            margin: 0 auto 80px;
             align-items: start;
         }
 
         .footer-section h3 {
-            font-size: 13px;
+            font-size: 14px;
             letter-spacing: 2px;
             margin-bottom: 15px;
-            font-weight: 500;
+            font-weight: 400;
             text-transform: uppercase;
         }
 
         .footer-section p {
-            font-size: 13px;
-            margin-bottom: 25px;
+            font-size: 14px;
+            margin-bottom: 60px;
             line-height: 1.6;
+            font-weight: 300;
         }
 
         .footer-input-group {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #666;
-            padding-bottom: 2px;
-            margin-bottom: 25px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
         }
 
         .footer-section input {
             flex: 1;
-            padding: 12px 0;
+            padding: 0;
             background: transparent;
             border: none;
-            color: #fff;
-            font-size: 13px;
+            color: #666;
+            font-size: 15px;
         }
 
         .footer-section input::placeholder {
             color: #666;
         }
 
-        .footer-section input:focus {
-            outline: none;
-        }
-
         .footer-section button {
             background: transparent;
             border: none;
             color: #fff;
-            padding: 12px 0;
+            padding: 0;
             cursor: pointer;
             font-size: 13px;
             letter-spacing: 1px;
@@ -490,17 +488,37 @@
         .footer-checkbox {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 12px;
+            gap: 10px;
+            font-size: 14px;
             color: #fff;
+            font-weight: 300;
         }
 
         .footer-checkbox input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            border: 1px solid #666;
-            background: transparent;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #fff;
+            background: #000;
             cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            flex-shrink: 0;
+        }
+
+        .footer-checkbox input[type="checkbox"]:checked {
+            background: #000;
+            border-color: #fff;
+            position: relative;
+        }
+
+        .footer-checkbox input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: #fff;
+            font-size: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .footer-checkbox label {
@@ -543,7 +561,7 @@
             gap: 15px;
         }
 
-        .footer-links a::after {
+        .footer-links a.with-plus::after {
             content: '+';
             color: #666;
             font-size: 16px;
@@ -768,6 +786,7 @@
 
             <div class="footer-section">
                 <h3>SUBSCRIBE TO NEWSLETTER</h3>
+                <p>&nbsp;</p>
                 <div class="footer-input-group">
                     <input type="email" placeholder="Insert your email">
                     <button>Confirm</button>
@@ -785,10 +804,10 @@
                     <a href="#">SERVICES</a>
                     <a href="#">ORDER TRACKING</a>
                     <a href="#">RETURNS</a>
-                    <a href="#">CUSTOMER CARE</a>
-                    <a href="#">LEGAL AREA</a>
-                    <a href="#">CORPORATE</a>
-                    <a href="#">FOLLOW US</a>
+                    <a href="#" class="with-plus">CUSTOMER CARE</a>
+                    <a href="#" class="with-plus">LEGAL AREA</a>
+                    <a href="#" class="with-plus">CORPORATE</a>
+                    <a href="#" class="with-plus">FOLLOW US</a>
                 </div>
                 <div class="footer-links-right">
                     <span>COUNTRY & LANGUAGE</span>
