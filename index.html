@@ -91,70 +91,67 @@
             padding: 10px 20px;
         }
 
+        /* Logo Container */
         .logo {
-            font-size: 120px;
-            font-weight: 300;
-            letter-spacing: 0px;
             margin-bottom: 30px;
-            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0;
         }
 
-        .logo-text {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
+        .logo a {
+            display: block;
+            line-height: 0;
         }
 
-        .logo-ampersand {
-            font-size: 70px;
-            font-weight: 300;
-            letter-spacing: 6px;
-            transform: translateY(22px);
+        .logo-default {
+            height: 80px;
+            width: auto;
+            display: block;
         }
 
-        .header-wrapper:hover .logo {
-            color: #000;
-        }
-
-        .header-wrapper.scrolled .logo {
-            font-size: 0;
-            margin-bottom: 0;
-            color: #000;
-        }
-
-        .dg-icon {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #fff;
+        .logo-hover {
+            height: 80px;
+            width: auto;
             display: none;
         }
 
-        .header-wrapper.scrolled .dg-icon {
+        /* Show hover logo when header is hovered */
+        .header-wrapper:hover .logo-default {
+            display: none;
+        }
+
+        .header-wrapper:hover .logo-hover {
             display: block;
-            font-size: 32px;
-            margin-bottom: 10px;
+        }
+
+        /* Hide both logos when scrolled */
+        .header-wrapper.scrolled .logo {
+            margin-bottom: 0;
+        }
+
+        .header-wrapper.scrolled .logo-default,
+        .header-wrapper.scrolled .logo-hover {
+            display: none;
+        }
+
+        /* Scrolled Logo */
+        .dg-logo-link {
+            display: none;
+        }
+
+        .header-wrapper.scrolled .dg-logo-link {
+            display: block;
         }
 
         .dg-logo-img {
             height: 40px;
             width: auto;
-            display: none;
             margin: 0 auto;
-        }
-
-        .header-wrapper.scrolled .dg-logo-img {
             display: block;
         }
 
-        .header-wrapper.scrolled .dg-icon {
-            display: none;
-        }
-
+        /* Sub Menu */
         .sub-menu {
             display: flex;
             justify-content: center;
@@ -628,12 +625,13 @@
                 grid-template-columns: 1fr;
             }
 
-            .logo {
-                font-size: 48px;
+            .logo-default,
+            .logo-hover {
+                height: 50px;
             }
 
-            .logo-ampersand {
-                font-size: 27px;
+            .dg-logo-img {
+                height: 30px;
             }
         }
     </style>
@@ -673,13 +671,19 @@
 
         <!-- Main Header -->
         <header class="main-header">
+            <!-- Logo - Default and Hover states -->
             <div class="logo">
-                <span>DOLCE</span>
-                <span class="logo-ampersand">&</span>
-                <span>GABBANA</span>
+                <a href="https://www.dolcegabbana.com/en-vn/">
+                    <img src="images/logo-default.png" alt="Dolce&Gabbana" class="logo-default">
+                    <img src="images/logo-hover.png" alt="Dolce&Gabbana" class="logo-hover">
+                </a>
             </div>
-            <img src="images/logo-dg.png" alt="DG Logo" class="dg-logo-img">
-            <div class="dg-icon">DG</div>
+            
+            <!-- Logo when scrolled -->
+            <a href="https://www.dolcegabbana.com/en-vn/" class="dg-logo-link">
+                <img src="images/logo-dg.png" alt="DG Logo" class="dg-logo-img">
+            </a>
+            
             <div class="sub-menu">
                 <a href="#">FOOD</a>
                 <a href="#">BEVERAGE</a>
