@@ -17,6 +17,25 @@
             background: #fff;
         }
 
+        /* Header Wrapper */
+        .header-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .header-wrapper:hover {
+            background: #fff;
+        }
+
+        .header-wrapper.scrolled {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         /* Top Navigation */
         .top-nav {
             background: transparent;
@@ -26,17 +45,10 @@
             align-items: center;
             font-size: 13px;
             border-bottom: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
         }
 
-        .header-wrapper:hover .top-nav,
-        .top-nav.scrolled {
-            background: #fff;
-            border-bottom: 1px solid #e0e0e0;
+        .header-wrapper.scrolled .top-nav {
+            padding: 10px 40px;
         }
 
         .top-nav-left, .top-nav-right {
@@ -60,7 +72,7 @@
         }
 
         .header-wrapper:hover .top-nav a,
-        .top-nav.scrolled a {
+        .header-wrapper.scrolled .top-nav a {
             color: #000;
         }
 
@@ -73,24 +85,10 @@
             background: transparent;
             text-align: center;
             padding: 40px 20px 20px;
-            position: fixed;
-            top: 45px;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            border-bottom: none;
         }
 
-        .header-wrapper:hover .main-header {
-            background: #fff;
-        }
-
-        .main-header.scrolled {
-            background: #fff;
-            padding: 15px 20px;
-            top: 45px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-bottom: none;
+        .header-wrapper.scrolled .main-header {
+            padding: 10px 20px;
         }
 
         .logo {
@@ -105,7 +103,7 @@
             color: #000;
         }
 
-        .main-header.scrolled .logo {
+        .header-wrapper.scrolled .logo {
             font-size: 0;
             margin-bottom: 0;
             color: #000;
@@ -119,7 +117,7 @@
             display: none;
         }
 
-        .main-header.scrolled .dg-icon {
+        .header-wrapper.scrolled .dg-icon {
             display: block;
             font-size: 32px;
             margin-bottom: 10px;
@@ -132,11 +130,11 @@
             margin: 0 auto;
         }
 
-        .main-header.scrolled .dg-logo-img {
+        .header-wrapper.scrolled .dg-logo-img {
             display: block;
         }
 
-        .main-header.scrolled .dg-icon {
+        .header-wrapper.scrolled .dg-icon {
             display: none;
         }
 
@@ -149,7 +147,7 @@
             margin-top: 20px;
         }
 
-        .main-header.scrolled .sub-menu {
+        .header-wrapper.scrolled .sub-menu {
             margin-top: 10px;
             font-size: 12px;
         }
@@ -161,7 +159,7 @@
         }
 
         .header-wrapper:hover .sub-menu a,
-        .main-header.scrolled .sub-menu a {
+        .header-wrapper.scrolled .sub-menu a {
             color: #000;
         }
 
@@ -857,18 +855,12 @@
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
-            const topNav = document.querySelector('.top-nav');
-            const mainHeader = document.querySelector('.main-header');
-            const body = document.body;
+            const headerWrapper = document.querySelector('.header-wrapper');
             
             if (window.scrollY > 50) {
-                topNav.classList.add('scrolled');
-                mainHeader.classList.add('scrolled');
-                body.classList.add('scrolled');
+                headerWrapper.classList.add('scrolled');
             } else {
-                topNav.classList.remove('scrolled');
-                mainHeader.classList.remove('scrolled');
-                body.classList.remove('scrolled');
+                headerWrapper.classList.remove('scrolled');
             }
         });
     </script>
