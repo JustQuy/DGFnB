@@ -97,6 +97,23 @@
             letter-spacing: 8px;
             margin-bottom: 30px;
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logo-text {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .logo-ampersand {
+            font-size: 40px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            transform: translateY(8px);
         }
 
         .header-wrapper:hover .logo {
@@ -427,6 +444,14 @@
             letter-spacing: 4px;
             margin-bottom: 60px;
             font-weight: 300;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .footer-logo-ampersand {
+            font-size: 14px;
         }
 
         .footer-content {
@@ -606,6 +631,10 @@
             .logo {
                 font-size: 48px;
             }
+
+            .logo-ampersand {
+                font-size: 27px;
+            }
         }
     </style>
 </head>
@@ -644,7 +673,11 @@
 
         <!-- Main Header -->
         <header class="main-header">
-            <div class="logo">DOLCE & GABBANA</div>
+            <div class="logo">
+                <span>DOLCE</span>
+                <span class="logo-ampersand">&</span>
+                <span>GABBANA</span>
+            </div>
             <img src="images/logo-dg.png" alt="DG Logo" class="dg-logo-img">
             <div class="dg-icon">DG</div>
             <div class="sub-menu">
@@ -767,7 +800,11 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">DOLCE & GABBANA</div>
+        <div class="footer-logo">
+            <span>DOLCE</span>
+            <span class="footer-logo-ampersand">&</span>
+            <span>GABBANA</span>
+        </div>
         
         <div class="footer-content">
             <div class="footer-section">
