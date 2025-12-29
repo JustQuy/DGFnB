@@ -25,7 +25,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 13px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-bottom: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -74,10 +74,11 @@
             text-align: center;
             padding: 40px 20px 20px;
             position: fixed;
-            top: 50px;
+            top: 45px;
             left: 0;
             right: 0;
             z-index: 999;
+            border-bottom: none;
         }
 
         .header-wrapper:hover .main-header {
@@ -89,6 +90,7 @@
             padding: 15px 20px;
             top: 45px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: none;
         }
 
         .logo {
@@ -587,9 +589,6 @@
             margin: 0 auto;
         }
 
-
-
-
         /* Responsive */
         @media (max-width: 768px) {
             .split-section {
@@ -648,12 +647,6 @@
         <!-- Main Header -->
         <header class="main-header">
             <div class="logo">DOLCE & GABBANA</div>
-            <!-- 
-            LOGO IMAGE: logo-dg.png hoặc logo-dg.svg
-            Logo DG của Dolce & Gabbana
-            Kích thước gợi ý: 150x50px (hoặc tỷ lệ tương đương)
-            Nên dùng PNG với nền trong suốt hoặc SVG
-            -->
             <img src="images/logo-dg.png" alt="DG Logo" class="dg-logo-img">
             <div class="dg-icon">DG</div>
             <div class="sub-menu">
@@ -690,7 +683,7 @@
                 <a href="#" class="shop-btn">SHOP NOW</a>
             </div>
             
-            <!-- Carousel trong phần trái -->
+            <!-- Carousel -->
             <div class="wine-carousel-container">
                 <div class="carousel">
                     <div class="carousel-inner" id="carouselInner">
@@ -730,8 +723,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
-                    <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+                    <button class="carousel-nav prev" onclick="moveCarousel(-1)">⬅</button>
+                    <button class="carousel-nav next" onclick="moveCarousel(1)">➡</button>
                 </div>
                 
                 <!-- Counter -->
@@ -745,13 +738,8 @@
             </div>
         </div>
         
-        <!-- Hình cố định bên phải -->
+        <!-- Right Image -->
         <div class="split-right">
-            <!-- 
-            HÌNH ẢNH CỐ ĐỊNH: wine-fixed.jpg
-            Hình collection các chai rượu Donnafugata
-            Kích thước: 800x1000px (portrait)
-            -->
             <div class="hero-placeholder" style="width:100%;height:100%;">
                 <div style="text-align:center;">
                     <strong style="font-size:16px;">WINE FIXED IMAGE</strong><br><br>
@@ -858,7 +846,7 @@
             
             // Update progress bar position
             const progressBar = document.getElementById('progressBar');
-            const position = (currentSlide / (totalSlides - 1)) * 80; // 80% là 4 đoạn trên thanh 5 slides
+            const position = (currentSlide / (totalSlides - 1)) * 80;
             progressBar.style.left = position + '%';
         }
 
